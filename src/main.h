@@ -42,7 +42,7 @@ void f_02CFE(int a);
 char pd_value_03486(void);
 void f_03518(void);
 void f_03558(void);
-void memzero_044A8(void s, size_t n);
+void memzero_044A8(void *s, size_t n);
 void f_044D6(void);
 void reset_magic_string_04598(void);
 char need_reset_045A6(void);
@@ -64,6 +64,6 @@ void f_09D54(char a);
 void f_09D84(void);
 void reset_all_0AFB0(void);
 void f_0AFE0(void);
-void getkeycode_0B45E(void)
+void getkeycode_0B45E(void);
 void f_112EA(void);
 void invalid_var_1B4EA(void *var);

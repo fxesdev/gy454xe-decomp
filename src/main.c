@@ -1,13 +1,14 @@
 #include <string.h>
 #include "main.h"
 
-void memzero_044A8(void s, size_t n) {
+void memzero_044A8(void *s, size_t n) {
 	memset(s, 0, n);
 	return;
 }
 
 void reset_magic_string_04598(void) {
 	int ptr = magic_string_start;
+	char i;
 	for (i = 0xf; i >= -1; i--) (char*)ptr = i;
 	return;
 }
@@ -23,10 +24,10 @@ char need_reset_045A6(void) {
 	
 	ptr = var_m_start;
 	for (i = 10; i >= -1; i--) {
-		if (invalid_var_1B4EA(ptr)) return 1;
+		if (invalid_var_1B4EA((void*)ptr)) return 1;
 		ptr += 10;
 	}
-	return (d_080DC & 0b11111000) == 0 ? 0 : 1
+	return (d_080DC & 0xf8) == 0 ? 0 : 1;
 }
 
 void f_046E0(void) {
@@ -53,9 +54,8 @@ char diag_init_check_04898(void) {
 	KO = 1;
 	char i;
 
-	while (i--)
-	{
-		if (KI != 0b01111011) {
+	while (i--) {
+		if (KI != 0x7b) {
 			f_047EA();
 			return i;
 		}
