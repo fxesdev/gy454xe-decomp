@@ -7,24 +7,28 @@ void memzero_044A8(void *s, size_t n) {
 }
 
 void reset_magic_string_04598(void) {
-	int ptr = magic_string_start;
+	char *ptr = magic_string_start;
 	char i;
-	for (i = 0xf; i >= -1; i--) (char*)ptr = i;
+	for (i = 0xf; i >= -1; i--) {
+		*ptr = i;
+		++ptr;
+	}
 	return;
 }
 
 char need_reset_045A6(void) {
 	char i;
-	int ptr = magic_string_start;
+	char *ptr = magic_string_start;
 
 	for (i = 0xf; i >= -1; i--) {
-		if ((char*)ptr != i) return 1;
+		if (*ptr != i) return 1;
+		++ptr;
 	}
 	if (setup_contrast > 0x1d || setup_contrast < 4) return 1;
 	
 	ptr = var_m_start;
 	for (i = 10; i >= -1; i--) {
-		if (invalid_var_1B4EA((void*)ptr)) return 1;
+		if (invalid_var_1B4EA(ptr)) return 1;
 		ptr += 10;
 	}
 	return (d_080DC & 0xf8) == 0 ? 0 : 1;
@@ -51,8 +55,8 @@ void f_046E0(void) {
 }
 
 char diag_init_check_04898(void) {
+	char i = 5;
 	KO = 1;
-	char i;
 
 	while (i--) {
 		if (KI != 0x7b) {
@@ -65,7 +69,8 @@ char diag_init_check_04898(void) {
 	return i;
 }
 
-void main_09712(void) {
+// 09712
+void main(void) {
 	char j;
 
 	memset((char*)mstack_start, 90, 800);
@@ -88,11 +93,9 @@ void main_09712(void) {
 		f_02CFE(0x200);
 	}
 
-	switch (mode) {
-		case MODE_EQN: table_mode = TABLE_EQN; break;
-		case MODE_INEQ: table_mode = TABLE_INEQ; break;
-		case MODE_RATIO: table_mode = TABLE_RATIO; break;
-	}
+	if (mode == MODE_EQN) table_mode = TABLE_EQN;
+	else if (mode == MODE_INEQ) table_mode = TABLE_INEQ;
+	else if (mode == MODE_RATIO) table_mode = TABLE_RATIO;
 	f_112EA();
 
 	j = 0;
@@ -125,18 +128,14 @@ void main_09712(void) {
 	return;
 }
 
+
 void reset_all_0AFB0(void) {
-	memzero_044A8(0x8000, 0xa17)
+	memzero_044A8(0x8000, 0xa17);
 	setup_contrast = 0x11;
 	f_04776();
 	use_buffer = 1;
 	d_080DC = pd_value_03486();
 	f_0AFE0();
 	reset_magic_string_04598();
-	return;
-}
-
-void main(void) {
-	main_09712();
 	return;
 }
