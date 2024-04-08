@@ -71,7 +71,7 @@ char diag_init_check_04898(void) {
 
 // 09712
 void main(void) {
-	char j;
+	char i, j;
 
 	memset((char*)mstack_start, 90, 800);
 	f_046E0();
@@ -103,7 +103,7 @@ void main(void) {
 		if (j) {
 			f_0478E();
 			// odd MOV R0, #1 in compiled code here
-			getkeycode_0B45E();
+			getkeycode_0B45E(1);
 			f_044D6();
 			if (last_fn_key == K_MODE) screen_state = 1;
 			else if (last_fn_key == K_SETUP) screen_state = 2;
@@ -123,10 +123,41 @@ void main(void) {
 			}
 		}
 		j = 1;
-		// TODO
+		if (screen_state) {
+			switch (screen_state) {
+				case 1:
+					d_08126 = 0;
+					i = f_08CD6();
+				case 2:
+					d_08126 = 0;
+					if (i = f_08DBA()) {
+						f_044D2();
+						if (!(table_mode & (1 << 4))) f_044B6();
+					}
+			}
+			if (!i) render_0312C();
+			else j = 0;
+			screen_state = 0;
+		}
+		if (f_0B6B6()) j = f_09962(0);
+		else {
+			if (table_mode != TABLE_EQN && table_mode != TABLE_INEQ && TABLE_RATIO && last_fn_key == K_AC) {
+				table_mode = 1;
+				f_0B8B8();
+				j = 0;
+			}
+			else if (table_mode == TABLE_STAT_TABLE) {
+				f_0A0BC();
+				j = 1;
+			}
+			else if (table_mode == TABLE_MATRIX) j = f_0A93A(i);
+			else if (table_mode == TABLE_VECTOR) j = f_0A936(i);
+			else if (table_mode == TABLE_EQN) j = f_0A594(i);
+			else if (table_mode == TABLE_RANGE) j = f_0A050(i);
+			else if (table_mode == TABLE_CALC) j = f_09BDC(i);
+			else if (table_mode == TABLE_SOLVE) j = f_09BDC(i);
+		}
 	}
-
-	return;
 }
 
 
