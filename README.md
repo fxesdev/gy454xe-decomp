@@ -18,4 +18,5 @@ In order to create an accurate decompilation, the code will need to be separated
 The code was compiled with the LARGE memory model and NEAR data model options.
 
 ## Building
-At this time, there is no provided way to build this code, however you can (try to) build it yourself with CCU8. The code will not work yet.
+At this time, there is no provided way to build this code, however you can (try to) build it yourself with CCU8 and the MACU8 Assembler Package in the development tools.
+The code is not guaranteed to build successfully and will not work yet.
