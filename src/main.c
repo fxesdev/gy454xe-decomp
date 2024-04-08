@@ -107,7 +107,7 @@ void main(void) {
 			f_044D6();
 			if (last_fn_key == K_MODE) screen_state = 1;
 			else if (last_fn_key == K_SETUP) screen_state = 2;
-			if (last_fn_key > 0 && last_fn_key < 12) screen_state = 3;
+			else if (last_fn_key > 0 && last_fn_key < 12) screen_state = 3;
 			else {
 				if (last_fn_key == K_CALC) {
 					if (f_09D84()) continue;
@@ -122,6 +122,7 @@ void main(void) {
 				else screen_state = 0;
 			}
 		}
+		j = 1;
 		// TODO
 	}
 
