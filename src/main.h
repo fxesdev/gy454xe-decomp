@@ -1,6 +1,8 @@
 #define var_m_start 0x8226
 #define magic_string_start 0x860E
 #define mstack_start 0x8A18
+#define ki_adr 0xF040
+#define ko_adr 0xF046
 
 #define MODE_COMP 0xC1
 #define MODE_CMPLX 0xC4
@@ -38,14 +40,14 @@
 
 #define d_0F00A (*(char*)0xF00A)
 #define DSPCNT (*(char*)0xF032)
-#define KI (*(int*)0xF040)
+#define KI (*(int*)ki_adr)
 #define KI_H (*(int*)0xF041)
-#define KO (*(int*)0xF046)
+#define KO (*(char*)ko_adr)
 #define d_0F221 (*(char*)0xF221)
 #define d_0F222 (*(char*)0xF222)
 #define d_0F223 (*(char*)0xF223)
 
-void f_02CFE(int a);
+void fill_screen_02CFE(int a);
 void render_0312C(void);
 char pd_value_03486(void);
 void f_03518(void);
@@ -68,9 +70,18 @@ void f_047EA(void);
 void f_0478E(void);
 char diag_init_check_04898(void);
 void diagnostic_mode_048C2(void);
+void diagnostic_048F6(void);
+void diag_check_key_04986(void);
+void line_print_small_049F2(char row, char *string);
+void diag_scr_fill_ws_04A02(char byte);
+void diag_scr_ckb1_ws_04A10(void);
+void diag_scr_ckb2_ws_04A30(void);
+void diag_scr_box_ws_04A58(void);
+void diag_checksum_04A9E(void);
 void f_04CAA(void);
 char f_08CD6(void);
 char f_08DBA(void);
+char set_contrast_08FA2(char diag);
 void main(void);
 char f_09962(char a);
 char f_09BDC(char a);
@@ -83,8 +94,11 @@ char f_0A594(char a);
 char f_0A936(char a);
 char f_0A93A(char a);
 void f_0AFE0(void);
+void getscancode_0B0C6(int *kio);
 void getkeycode_0B45E(char a);
+void f_0B5C6(char a);
 char f_0B6B6(void);
+char f_0B804(void);
 char f_0B8B8(void);
 void f_112EA(void);
 char invalid_var_1B4EA(void *var);
