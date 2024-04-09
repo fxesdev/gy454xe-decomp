@@ -1,6 +1,33 @@
 #include <string.h>
 #include "main.h"
 
+char line_print_02E7A(char col, char row, char *string) {
+	char a, b, c, d, e;
+
+	a = 4;
+	b = 0x18;
+	if (font_size != 6) {
+		a = 6;
+		b = 10;
+	}
+	c = 0x60 - a;
+	d = 0;
+
+	while (++d < b) {
+		if (col <= c) {
+			if (!(e = *string)) return 0;
+			char_print_02EBA(col, row, e);
+			string += 1;
+			col += a;
+		}
+	}
+	return d;
+}
+
+char line_print_col_0_02E78(char col, char row, char *string) {
+	return line_print_02E7A(0, row, string);
+}
+
 void memzero_044A8(void *s, size_t n) {
 	memset(s, 0, n);
 	return;
@@ -104,6 +131,11 @@ void diagnostic_048F6(void) {
 	f_04776();
 	f_03558();
 	return;
+}
+
+void line_print_small_049F2(char row, char *string) {
+	font_size = 7;
+	line_print_col_0_02E78(0, row, string);
 }
 
 // 09712

@@ -35,6 +35,7 @@
 #define table_mode (*(char*)0x80FC)
 #define d_080FE (*(char*)0x80FE)
 #define setup_contrast (*(char*)0x810E)
+#define font_size (*(char*)0x811B)
 #define use_buffer (*(char*)0x811D)
 #define d_08126 (*(char*)0x8126)
 
@@ -48,6 +49,10 @@
 #define d_0F223 (*(char*)0xF223)
 
 void fill_screen_02CFE(int a);
+char line_print_col_0_02E78(char col, char row, char *string);
+#pragma inline line_print_02E7A
+char line_print_02E7A(char col, char row, char *string);
+void char_print_02EBA(char col, char row, char a);
 void render_0312C(void);
 char pd_value_03486(void);
 void f_03518(void);
