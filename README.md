@@ -1,4 +1,4 @@
-This is a **very WIP** decompilation of the Casio fx-570/991ES PLUS (`GY454X VerE`, `SUM 8928`) real calculator ROM.
+This is a **very WIP** decompilation of the Casio fx-570/991ES PLUS (`GY454X VerE`, `SUM 8929`) real calculator ROM.
 
 ## Why this ROM?
 Casio fx-570/991ES PLUS VerE real ROM was chosen because it has been very well documented.
