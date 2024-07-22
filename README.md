@@ -10,13 +10,14 @@ The code is a mix of hand-written U8 assembly code, ANSI-C code compiled to U8 a
 
 ## About the code
 In order to create an accurate decompilation, the code will need to be separated into 4 categories:
-1. **Code written by Casio in ANSI-C** (`main`, diagnostic, reset_all, etc): will be decompiled by hand into **ANSI-C** code that can be compiled with CCU8 to produce matching assembly.
-2. **Code written by Casio in ASM**: will be disassembled and reverse engineered.
-3. **Code from the SDK .lib files written by Lapis** (memset, etc): will most likely not need to be decompiled.
+1. **Code written by Casio in ANSI-C** (`main`, diagnostic, reset_all, etc): will be decompiled into **ANSI-C** code that can be compiled with CCU8 to produce matching assembly.
+2. **Code written by Casio in ASM**: will be disassembled, reverse engineered and made to work with RASU8.
+3. **Code from the SDK .lib files written by Lapis** (memset, etc): will not need to be decompiled. SDK code can be linked using the `/CC` option of RLU8.
 4. **Code from the SDK MCU-specific files written by Lapis** (startup code, etc): will have to be recreated using existing files for other U8 MCUs, as the files for the specific MCU Casio used is not in the development tools.
 
 The code was compiled with the LARGE memory model and NEAR data model options.
 
 ## Building
-At this time, there is no provided way to build this code, however you can (try to) build it yourself with CCU8 and the MACU8 Assembler Package in the development tools.
-The code is not guaranteed to build successfully and will not work yet.
+Run `build.bat` in the root directory. Note that a successful build is NOT guaranteed.
+
+Also included is a compiled version of [Hex2bin](https://sourceforge.net/projects/hex2bin/) by Jacques Pelletier, version v1.0.1.
