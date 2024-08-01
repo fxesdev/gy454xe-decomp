@@ -4,9 +4,8 @@
 ;       LARGE CODE MODEL
 ;       ROMWINDOW  00000H-07FFFH
 ;       Version 1.00
-;       Last Edition  Jul 22, 2024
+;       Last Edition  Aug 01, 2024
 ;       Copyright (C) 2024 GamingWithEvets Inc. https://gamingwithevets.github.io
-;       U8/U16 Device Information Files V2.00
 ;***************************************************************
 
         type(ML610CASESplus)
